@@ -1,0 +1,70 @@
+import React,{useState,useEffect} from "react";
+import '../css/Home.css'
+import MovieCard from "../components/MovieCard";
+import { searchMovies,getPopularMovies } from "../services/api";
+
+function Home(){
+    const [seacrhQuery,setSearchQuery]=useState("");
+     const [movies,setMovies]=useState([]);
+   const [error,setError]=useState(null);
+   const [loading,setLoading]=useState(true);
+     useEffect(()=>{
+         const loadPopular= async ()=>{
+            try{
+               const popular=await getPopularMovies();
+               setMovies(popular);
+            }
+            catch(err){
+               console.log(err);
+               setError("Failed to retrieve popular");
+            }
+            finally{
+               setLoading(false);
+            }
+         }
+         loadPopular();
+     },[]);
+     const handleSearch = async(e)=>{
+        e.preventDefault();
+        if(!seacrhQuery.trim()) return;
+        if(loading) return;
+        setLoading(true);
+        try{
+         const searchedMovie=await searchMovies(seacrhQuery);
+         setMovies(searchedMovie);
+         setError(null);
+        }catch(err){
+         console.log(err);
+         setError("Failed to search movie");
+        }
+        finally{
+         setLoading(false);
+        }
+
+     };
+     function handleSearchQuery(event){
+        setSearchQuery(event.target.value);
+
+     }
+     return (
+        <div className="home">
+            <form onSubmit={handleSearch} className="search-form">
+                <input 
+                type="text" 
+                placeholder="Search for movies " 
+                className="search-input" 
+                value={seacrhQuery} 
+                onChange={handleSearchQuery}/>
+                <button type="submit" className="search-btn">Search</button>
+            </form>
+            {error && <div className="error-message">{error}</div>}
+            {loading ? <div className="loading">Loading......</div>:
+            (<div className="movies-grid">
+                {movies.map(movie=>
+                    (<MovieCard movie={movie} key={movie.id}></MovieCard>))}
+            </div>)
+            }
+        </div>
+     )
+}
+export default Home
