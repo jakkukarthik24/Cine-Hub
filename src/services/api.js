@@ -11,3 +11,4 @@ export const searchMovies=async (query)=>{
     const data=await response.json();
     return data.results;
 };
+export {API_KEY,BASE_URL};
