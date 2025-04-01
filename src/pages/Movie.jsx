@@ -30,8 +30,8 @@ function Movie(){
                 <h2>Overview</h2>
                 <p>{movie.overview}</p>
                 <br/>
-                <p>Release Date: {movie.release_date}</p>
-                <p>Vote Average: {movie.vote_average}</p>
+                <p ><span className="info">Release Date : </span> {movie.release_date}</p>
+                <p ><span className="info">Vote Average : </span> {movie.vote_average}</p>
             </div>
         </div>
         </>
