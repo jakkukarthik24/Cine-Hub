@@ -7,15 +7,15 @@
     background: #141414;
     color: #fff;
     text-align: left;
-    border-radius: 20px;
+    border-radius: 10px;
     background: linear-gradient(to right, #8B0000, #B22222);
     padding: 20px 10%;
+    margin: 10px
 }
 .info{
     font-weight: bold;
     font-size: 1.2rem;
 }
-
 .movie-image img {
     width: 320px;
     border-radius: 12px;
@@ -53,8 +53,60 @@
     color: #ddd;
     margin-top: 10px;
 }
+.trailer-container{
+    position: relative;;
+    width: 100%;
+    padding-top: 56.25%;
+}
+.trailer-container iframe{
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.similar{
+    background: #141414;
+    margin-top: 20px;
+    border-radius: 10px;
+    background: linear-gradient(to right, #8B0000, #B22222);
+    padding: 15px;
+    text-align: center;
+    margin: 20px
+}
+.similar h2 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+.similar-movies{
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 10px;
+    
+}
+.similar-movies::-webkit-scrollbar {
+    display: none;
+}
 
-
+@media (max-width: 480px) {
+    .similar {
+        padding: 10px;
+    }
+    .similar h2 {
+        font-size: 1.3rem;
+    }
+    .similar-movies {
+        gap: 10px;
+    }
+    .similar-movies img {
+        width: 100px;
+        height: 150px;
+    }
+}
 @media (min-width: 768px) {
     .movie-detail {
         flex-direction: row;
@@ -88,6 +140,9 @@
         flex: 2;
         padding-left: 50px; 
     }
+    .trailer-container {
+        padding-top: 56.25%;
+    }
 }
 @media (min-width: 480px){
     .movie-detail {
@@ -103,5 +158,8 @@
     .movie-data {
         flex: 2;
         padding-left: 50px; 
+    }
+    .trailer-container {
+        padding-top: 56.25%;
     }
 }
