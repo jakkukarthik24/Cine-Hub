@@ -1,0 +1,111 @@
+
+.login-form {
+    font-family: Arial, sans-serif;
+    background-color: #242424;
+    color:#242424;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    width: 100%;
+}
+.login-form .container{
+    background-color:#888888;
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    border-radius:20px;
+    box-shadow: 0 4px 12px;
+}
+.login-form h2{
+    text-align: center;
+    margin-bottom: 50px;
+    color: #0a1ef8;
+    font-weight: bold;
+    font-size: 2rem;
+    text-shadow: #242424 0px 0px 5px;
+}
+.login-form .input{
+    position: relative;
+    margin-bottom: 30px;
+}
+.login-form input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    font-size: 1rem;
+    background: #f4f4f4;
+    color: #242424;
+}
+
+.login-form input:focus{
+    border-color: #3a7bd5;
+}
+.login-form label{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    color: #888;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+.login-form input:focus + label,
+.login-form input:not(:placeholder-shown) + label{
+    top: -10px;
+    left: 10px;
+    font-size: 0.75rem;
+    color: #3a7bd5;
+    background-color: white;
+    padding: 0 5px;
+}
+.login-form #toggleIcon{
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    padding: 2px;
+    cursor: pointer;
+    font-size:x-large;
+}
+.login-form #toggleIcon2{
+    position: relative;
+    right: 10px;
+    top:30px;
+    cursor: pointer;
+    font-size:x-large;
+}
+
+
+.login-form button{
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    color: white;
+    background-color: #3a7bd5;
+
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.login-form button:hover{
+    background-color: #3a7bd5;
+}
+.login-form .signup-text{
+    font-size: 0.9rem;
+    margin-top: 15px;
+}
+.login-form .signup-text a{
+    color: #3a7bd5;
+    text-decoration: none;
+}
+.login-form .signup-text a:hover{
+    color: rgb(42, 83, 179);
+    text-decoration: underline;
+}

@@ -1,0 +1,347 @@
+.movie-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 50vh;
+    background: #141414;
+    color: #fff;
+    text-align: left;
+    border-radius: 10px;
+    background: linear-gradient(to right, #1a0202, #1d0505);
+    padding: 20px 10%;
+    margin: 10px
+}
+.info{
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.movie-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    flex-direction: column;
+}
+.movie-image img {
+    position: relative;
+    width: 320px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease-in-out;
+    margin-left: -30px; 
+}
+
+.movie-image img:hover {
+    transform: scale(1.05);
+}
+.movie-actions {
+position: relative;
+top: 0.75rem;
+right: 0.75rem;
+display: flex;
+flex-direction: row;
+gap: 0.6rem;
+z-index: 5;
+pointer-events: none;
+margin: 20px;
+}
+.movie-actions button {
+pointer-events: auto;
+}
+.f-btn,
+.wat-btn {
+background-color: rgba(0, 0, 0, 0.65);
+border: none;
+color: white;
+padding: 0.6rem;
+border-radius: 50%;
+cursor: pointer;
+z-index: 10;
+font-size: 3rem;
+width: 70px;
+height: 70px;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: all 0.25s ease-in-out;
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.f-btn:hover,
+.wat-btn:hover {
+background-color: rgba(255, 255, 255, 0.1);
+transform: scale(1.1);
+}
+
+.f-btn.active {
+color: #ff3366;
+}
+
+.wat-btn.active {
+color: #21d743;
+}
+
+.movie-data {
+    max-width: 600px;
+    margin-top: 20px;
+    margin-left: -30px; 
+}
+.trailer{
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #ddd;
+    margin-top: 10px;
+}
+.movie-data h1 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #ffcc00;
+}
+
+h2 {
+    position:relative;
+    font-size: 2rem;
+    margin-top: 15px;
+    color: #f5f5f5;
+}
+
+.movie-data p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #ddd;
+    margin-top: 10px;
+}
+.trailer-container{
+    position: relative;;
+    width: 100%;
+    padding-top: 56.25%;
+}
+.trailer-container iframe{
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.similar{
+    background: #141414;
+    margin-top: 20px;
+    border-radius: 10px;
+    background: linear-gradient(to right, #1a0202, #1d0505);
+    padding: 15px;
+    text-align: center;
+    margin: 20px
+}
+.similar h2 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+.similar-movies{
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 10px;
+    
+}
+.similar-movies::-webkit-scrollbar {
+    display: none;
+}
+.comment-section {
+    background: #141414;
+    margin-top: 20px;
+    border-radius: 10px;
+    background: linear-gradient(to right, #1a0202, #1d0505);
+    padding: 15px;
+    text-align: center;
+    margin: 20px
+}
+.comment-section h2 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+.comment-section form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.comment-form textarea {
+width: 80%;
+padding: 0.5rem;
+border-radius: 6px;
+resize: vertical;
+background: #2a2a2a;
+color: #fff;
+font-size: large;
+}
+.comment-form button {
+margin: 1rem;
+padding: 0.4rem 1rem;
+border-radius: 5px;
+border: none;
+cursor: pointer;
+background-color: #267b36;
+transition: background-color 0.3s ease;
+color: #fff;
+font-size: 1rem;
+}
+.comment-form button:hover{
+background-color: #1f5e2b;
+}
+.comment {
+margin-top: 1rem;
+padding: 1rem;
+background: #2a2a2a;
+border-radius: 5px;
+text-align: start;
+display: flex;
+flex-direction: column;
+border-bottom: 1px solid #ccc;
+position: relative;
+}
+.comment-user {
+font-weight: bold;
+color: #ffcc00;
+}
+.comment-time {
+font-size: 0.8rem;
+color: #888;
+}
+.comment-content{
+    display: flex;
+    flex-direction: row;
+}
+.comment-actions{
+    margin: 0.5rem;
+    margin-right: 2rem;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    right: 0;
+    gap: 6px;
+}
+.comment-actions button{
+    margin-right:8px;
+    padding:4px 10px;
+    font-size:1rem;
+    border:none;
+    border-radius:5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.comment-actions button:first-child{
+    background-color: #007bff;
+    color: #fff;
+}
+.comment-actions button:first-child:hover{
+    background-color: #0056b3;
+}
+.comment-actions button:last-child{
+    background-color: #dc3545;
+    color: #fff;
+}
+.comment-actions button:last-child:hover{
+    background-color: #a71d2a;
+}
+.comment-edit{
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #2a2a2a;
+    border-radius: 5px;
+    text-align: start;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+}
+.comment-edit textarea{
+    width: 80%;
+    padding: 0.5rem;
+    border-radius: 6px;
+    resize: vertical;
+    background: #2a2a2a;
+    color: #fff;
+    position: relative;
+    font-size: large;
+    
+}
+
+
+@media (max-width: 480px) {
+    .similar {
+        padding: 10px;
+    }
+    .similar h2 {
+        font-size: 1.3rem;
+    }
+    .similar-movies {
+        gap: 10px;
+    }
+    .similar-movies img {
+        width: 100px;
+        height: 150px;
+    }
+}
+@media (min-width: 768px) {
+    .movie-detail {
+        flex-direction: row;
+        padding: 50px 15%;
+    }
+
+    .movie-image {
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .movie-data {
+        flex: 2;
+        padding-left: 20px;
+    }
+}
+@media (min-width: 639px){
+    .movie-detail {
+        flex-direction: row;
+        margin: 20px;
+        padding: 50px 15%; 
+    }
+    .movie-image {
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;
+        padding: 10px;
+    }
+    .movie-data {
+        flex: 2;
+        padding-left: 50px; 
+    }
+    .trailer-container {
+        padding-top: 56.25%;
+    }
+}
+@media (min-width: 480px){
+    .movie-detail {
+        margin: 20px;
+        padding: 50px 15%; 
+    }
+    .movie-image {
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;
+
+    }
+    .movie-data {
+        flex: 2;
+        padding-left: 50px; 
+    }
+    .trailer-container {
+        padding-top: 56.25%;
+    }
+    
+}
