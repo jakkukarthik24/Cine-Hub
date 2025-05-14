@@ -1,5 +1,5 @@
 import {Strategy as LocalStrategy} from 'passport-local';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import db from './db.js';
 export default function initialize(passport){
     passport.use(new LocalStrategy({usernameField: 'email'},async (email,password,done)=>{
