@@ -12,7 +12,7 @@ dotenv.config();
 const app = express();
 initialize(passport);
 app.use(cors({
-    origin:'https://cine-hub69.netlify.app',
+    origin:'https://cine-hub69.netlify.app/',
     credentials:true
 }));
 app.use(express.json());
