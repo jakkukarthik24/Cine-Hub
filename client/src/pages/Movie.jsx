@@ -8,6 +8,9 @@ function Movie(){
     const location=useLocation();
     const navigate =useNavigate();
     const movie=location.state?.movie;
+    const fromSearch=location.state?.fromSearch;
+    const searchQuery=location.state?.searchQuery;
+    const searchResults=location.state?.searchResults;
     if (!movie) return <div className="error">Movie not found.</div>;
     const [similar,setSimilar]=useState([]);
     const [details,setDetails]=useState(null);
@@ -181,6 +184,21 @@ function Movie(){
         <>
         <div className="movie-detail">
             <div className="movie-image">
+                {fromSearch && (
+                    <button
+                        onClick={() =>
+                        navigate("/", {
+                            state: {
+                            searchQuery,
+                            searchResults,
+                            fromSearch: true
+                            }
+                        })
+                        }
+                    >
+                        <i className="bi bi-arrow-left"></i>
+                    </button>
+                    )}
                 <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
                 <br/>
                 <div className="movie-actions">

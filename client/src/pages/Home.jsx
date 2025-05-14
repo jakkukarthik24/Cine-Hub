@@ -1,9 +1,11 @@
 import React,{useState,useEffect} from "react";
 import '../css/Home.css'
+import { useLocation } from "react-router-dom";
 import MovieCard from "../components/MovieCard";
 import { searchMovies,getPopularMovies } from "../services/api";
 
 function Home(){
+   const location=useLocation();
     const [seacrhQuery,setSearchQuery]=useState("");
      const [movies,setMovies]=useState([]);
    const [error,setError]=useState(null);
@@ -23,7 +25,7 @@ function Home(){
             }
          }
          loadPopular();
-     },[]);
+     },[location.pathname]);
      const handleSearch = async(e)=>{
         e.preventDefault();
         if(!seacrhQuery.trim()) return;
