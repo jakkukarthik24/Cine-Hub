@@ -16,7 +16,7 @@ export const MovieProvider = ({ children }) => {
     async function fetchFavorites() {
       if (!user) return;
       try {
-        const response = await fetch(`http://localhost:5000/api/favorites/${user.id}`, {
+        const response = await fetch(`https://cine-hub.onrender.com/api/favorites/${user.id}`, {
           credentials: 'include',
         });
         const data = await response.json();
@@ -30,7 +30,7 @@ export const MovieProvider = ({ children }) => {
     async function fetchWatchList() {
       if (!user) return;
       try {
-        const response = await fetch(`http://localhost:5000/api/watchlist/${user.id}`, {
+        const response = await fetch(`https://cine-hub.onrender.com/api/watchlist/${user.id}`, {
           credentials: 'include',
         });
         const data = await response.json();
@@ -48,7 +48,7 @@ export const MovieProvider = ({ children }) => {
   const addToFavorites = async (movie) => {
     if (!user) return alert("Please log in");
     try {
-      await fetch("http://localhost:5000/api/favorites/add", {
+      await fetch("https://cine-hub.onrender.com/api/favorites/add", {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
@@ -69,7 +69,7 @@ export const MovieProvider = ({ children }) => {
   const addToWatchList = async (movie) => {
     if (!user) return alert("Please log in");
     try {
-      await fetch("http://localhost:5000/api/watchlist/add", {
+      await fetch("https://cine-hub.onrender.com/api/watchlist/add", {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
@@ -91,7 +91,7 @@ export const MovieProvider = ({ children }) => {
   const removeFromFavorites = async (movieId) => {
     if (!user) return alert("Please log in");
     try {
-      await fetch("http://localhost:5000/api/favorites/remove", {
+      await fetch("https://cine-hub.onrender.com/api/favorites/remove", {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
@@ -105,7 +105,7 @@ export const MovieProvider = ({ children }) => {
   const removeFromWatchList = async (movieId) => {
     if (!user) return alert("Please log in");
     try {
-      await fetch("http://localhost:5000/api/watchlist/remove", {
+      await fetch("https://cine-hub.onrender.com/api/watchlist/remove", {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

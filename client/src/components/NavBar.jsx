@@ -9,7 +9,7 @@ function NavBar(){
         setMenu(prev=>!prev);
     }
     const handleLogout = () => {
-        fetch("http://localhost:5000/api/auth/logout", {
+        fetch("https://cine-hub.onrender.com/api/auth/logout", {
           method: "POST",
           credentials: "include",
         })

@@ -87,7 +87,7 @@ function Movie(){
     useEffect(()=>{
         const fetchComments=async ()=>{
             try{
-                const result=await fetch(`http://localhost:5000/api/comments/${movie.id}`);
+                const result=await fetch(`https://cine-hub.onrender.com/api/comments/${movie.id}`);
                 const data=await result.json();
                 setComments(data);
             }
@@ -109,7 +109,7 @@ function Movie(){
             return;
         }
         try{
-            const response=await fetch('http://localhost:5000/api/comments',{
+            const response=await fetch('https://cine-hub.onrender.com/api/comments',{
                 method:'POST',
                 headers:{
                     "Content-Type":"application/json",
@@ -139,7 +139,7 @@ function Movie(){
             return;
         }
         try{
-            const response=await fetch(`http://localhost:5000/api/comments/${commentId}`,{
+            const response=await fetch(`https://cine-hub.onrender.com/api/comments/${commentId}`,{
                 method:'PUT',
                 headers:{
                     "Content-Type":"application/json",
@@ -164,7 +164,7 @@ function Movie(){
         const confirmDelete=window.confirm("Are you sure you want to delete the comment?");
         if(!confirmDelete) return;
         try{
-            const response=await fetch(`http://localhost:5000/api/comments/${commentId}`,{
+            const response=await fetch(`https://cine-hub.onrender.com/api/comments/${commentId}`,{
                 method:'DELETE',
                 headers:{
                     "Content-Type":"application/json",

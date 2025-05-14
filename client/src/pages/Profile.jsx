@@ -11,7 +11,7 @@ function Profile() {
 
   if (!user) return <p>You are not logged in.</p>;
   const handleLogout = () => {
-    fetch("http://localhost:5000/api/auth/logout", {
+    fetch("https://cine-hub.onrender.com/api/auth/logout", {
       method: "POST",
       credentials: "include",
     })
