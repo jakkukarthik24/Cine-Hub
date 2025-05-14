@@ -8,24 +8,16 @@ import initialize from './passport.js';
 import frouter from './routes/favorites.js';
 import wrouter from './routes/watchlist.js';
 import commentRouter from './routes/comments.js';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 dotenv.config();
 const app = express();
 initialize(passport);
 app.use(cors({
-    origin:'https://cine-hub69.netlify.app',
+    origin:'https://cine-hub69.netlify.app/',
     credentials:true
 }));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(express.static(path.join(__dirname, 'client/build')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/client/build/index.html'));
-});
+
 app.use(session({
     secret:process.env.SESSION_SECRET,
     resave:false,
