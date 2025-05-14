@@ -17,7 +17,10 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-
+app.use(express.static(path.join(__dirname, 'client/build')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/build/index.html'));
+});
 app.use(session({
     secret:process.env.SESSION_SECRET,
     resave:false,
