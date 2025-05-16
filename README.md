@@ -19,12 +19,6 @@ Cine-Hub is a full-stack movie web application where users can browse trending f
 
 ---
 
-## 📸 Demo
-
-![Cine-Hub Screenshot](https://cine-hub69.netlify.app/preview.jpg) <!-- Replace this with a real screenshot URL -->
-
----
-
 ## 🛠️ Tech Stack
 
 | Tech         | Role                   |
