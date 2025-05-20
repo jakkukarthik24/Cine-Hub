@@ -95,9 +95,9 @@ Cine-Hub/
 │       └── pages/
 ├── server/               # Express backend
 │   └── routes/
-│   └── controllers/
-│   └── models/
-│   └── middleware/
+│   └── db.js
+│   └── passport.js
+│   └── server.js
 ```
 
 ---
