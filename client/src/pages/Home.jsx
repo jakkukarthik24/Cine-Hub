@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react";
 import '../css/Home.css'
-import { useLocation } from "react-router-dom";
+import { useLocation,Link} from "react-router-dom";
 import MovieCard from "../components/MovieCard";
 import { searchMovies,getPopularMovies } from "../services/api";
 
@@ -11,6 +11,12 @@ function Home(){
    const [error,setError]=useState(null);
    const [loading,setLoading]=useState(true);
      useEffect(()=>{
+         if (location.state?.fromSearch && location.state?.searchResults) {
+         setSearchQuery(location.state.searchQuery || "");
+         setMovies(location.state.searchResults);
+         setError(null);
+         return;
+         }
          const loadPopular= async ()=>{
             try{
                const popular=await getPopularMovies();
@@ -62,8 +68,15 @@ function Home(){
             {error && <div className="error-message">{error}</div>}
             {loading ? <div className="loading">Loading......</div>:
             (<div className="movies-grid">
-                {movies.map(movie=>
-                    (<MovieCard movie={movie} key={movie.id}></MovieCard>))}
+                {movies.map(movie=>{
+                  const isSearch=seacrhQuery.trim().length>0;
+                  const linkState=isSearch?{fromSearch:true,seacrhQuery,searchResults:movies}:null;
+                  return(
+                     <Link key={movie.id} to={`/movie/${movie.id}`} state={{linkState}}>
+                        <MovieCard movie={movie} key={movie.id}></MovieCard>
+                    </Link>
+                  )
+                })}
             </div>)
             }
         </div>

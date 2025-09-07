@@ -186,6 +186,7 @@ function Movie(){
             <div className="movie-image">
                 {fromSearch && (
                     <button
+                        className="back-btn"
                         onClick={() =>
                         navigate("/", {
                             state: {
