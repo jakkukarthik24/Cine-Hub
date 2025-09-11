@@ -6,7 +6,7 @@ import { searchMovies,getPopularMovies } from "../services/api";
 
 function Home(){
    const location=useLocation();
-    const [seacrhQuery,setSearchQuery]=useState("");
+    const [searchQuery,setSearchQuery]=useState("");
      const [movies,setMovies]=useState([]);
    const [error,setError]=useState(null);
    const [loading,setLoading]=useState(true);
@@ -34,11 +34,11 @@ function Home(){
      },[location.pathname]);
      const handleSearch = async(e)=>{
         e.preventDefault();
-        if(!seacrhQuery.trim()) return;
+        if(!searchQuery.trim()) return;
         if(loading) return;
         setLoading(true);
         try{
-         const searchedMovie=await searchMovies(seacrhQuery);
+         const searchedMovie=await searchMovies(searchQuery);
          setMovies(searchedMovie);
          setError(null);
         }catch(err){
@@ -61,7 +61,7 @@ function Home(){
                 type="text" 
                 placeholder="Search for movies " 
                 className="search-input" 
-                value={seacrhQuery} 
+                value={searchQuery} 
                 onChange={handleSearchQuery}/>
                 <button type="submit" className="search-btn">Search</button>
             </form>
@@ -69,10 +69,16 @@ function Home(){
             {loading ? <div className="loading">Loading......</div>:
             (<div className="movies-grid">
                 {movies.map(movie=>{
-                  const isSearch=seacrhQuery.trim().length>0;
-                  const linkState=isSearch?{fromSearch:true,seacrhQuery,searchResults:movies}:null;
+                  const isSearch=searchQuery.trim().length>0;
+                  const linkState=isSearch?{fromSearch:true,searchQuery,searchResults:movies}:null;
                   return(
-                     <Link key={movie.id} to={`/movie/${movie.id}`} state={{linkState}}>
+                     <Link key={movie.id} to={`/movie/${movie.id}`}
+                        state={{
+                           movie,
+                           fromSearch:isSearch,
+                           searchQuery:searchQuery,
+                           searchResults:movies
+                        }}>
                         <MovieCard movie={movie} key={movie.id}></MovieCard>
                     </Link>
                   )
