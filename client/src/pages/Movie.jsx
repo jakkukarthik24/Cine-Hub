@@ -12,8 +12,19 @@ function Movie() {
   const fromSearch = location.state?.fromSearch;
   const searchQuery = location.state?.searchQuery;
   const searchResults = location.state?.searchResults;
+  if (!movie) {
+    return (
+      <div className="error">
+        Movie not found.
+        <button onClick={() => navigate(-1)}>Go Back</button>
+      </div>
+    );
+  }
 
-  if (!movie) return <div className="error">Movie not found.</div>;
+  useEffect(() => {
+    if (!movie?.id) return;
+    window.scrollTo(0, 0);
+  }, [movie?.id]);
 
   const [similar, setSimilar] = useState([]);
   const [details, setDetails] = useState(null);
@@ -26,11 +37,11 @@ function Movie() {
   const user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
-    document.title = `${movie.title || "Movie"} | Cine Hub`;
+    document.title = `${movie?.title || "Movie"} | Cine Hub`;
     return () => {
       document.title = "Cine Hub";
     };
-  }, [movie.title]);
+  }, [movie?.title]);
 
   const {
     isFavorite,
@@ -41,12 +52,13 @@ function Movie() {
     removeFromWatchList,
   } = useMovieContext();
 
-  const favorite = isFavorite(movie.id);
-  const watchlisted = isWatchListed(movie.id);
+  const favorite = movie?.id ? isFavorite(movie.id) : false;
+  const watchlisted = movie?.id ? isWatchListed(movie.id) : false;
 
   function handleFavorite(e) {
     e.stopPropagation();
     e.preventDefault();
+    if (!movie?.id) return;
     if (favorite) removeFromFavorites(movie.id);
     else addToFavorites(movie);
   }
@@ -54,15 +66,13 @@ function Movie() {
   function handleWatchList(e) {
     e.stopPropagation();
     e.preventDefault();
+    if (!movie?.id) return;
     if (watchlisted) removeFromWatchList(movie.id);
     else addToWatchList(movie);
   }
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [movie.id]);
-
-  useEffect(() => {
+    if (!movie?.id) return;
     const fetchDetails = async () => {
       try {
         const response = await fetch(
@@ -75,9 +85,10 @@ function Movie() {
       }
     };
     fetchDetails();
-  }, [movie.id]);
+  }, [movie?.id]);
 
   useEffect(() => {
+    if (!movie?.id) return;
     const fetchTrailer = async () => {
       try {
         const response = await fetch(
@@ -87,17 +98,16 @@ function Movie() {
         const trailer = data.results?.find(
           (video) => video.type === "Trailer" && video.site === "YouTube"
         );
-        if (trailer) {
-          setTrailerKey(trailer.key);
-        }
+        if (trailer) setTrailerKey(trailer.key);
       } catch (err) {
         console.log("Error finding trailer");
       }
     };
     fetchTrailer();
-  }, [movie.id]);
+  }, [movie?.id]);
 
   useEffect(() => {
+    if (!movie?.id) return;
     const fetchSimilar = async () => {
       try {
         const response = await fetch(
@@ -110,9 +120,10 @@ function Movie() {
       }
     };
     fetchSimilar();
-  }, [movie.id]);
+  }, [movie?.id]);
 
   useEffect(() => {
+    if (!movie?.id) return;
     const fetchComments = async () => {
       try {
         const result = await fetch(
@@ -125,7 +136,7 @@ function Movie() {
       }
     };
     fetchComments();
-  }, [movie.id]);
+  }, [movie?.id]);
 
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
