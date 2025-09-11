@@ -97,7 +97,9 @@ export const MovieProvider = ({ children }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: user.id, movieId }),
       });
-      setFavorites((prev) => prev.filter((m) => m.id !== movieId));
+      setFavorites((prev) =>
+          prev.filter((m) => String(m.id ?? m.movieId) !== String(movieId))
+      );
     } catch (err) {
       console.error("Remove failed", err);
     }
@@ -111,17 +113,22 @@ export const MovieProvider = ({ children }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: user.id, movieId }),
       });
-      setWatchList((prev) => prev.filter((m) => m.id !== movieId));
+      setWatchList((prev) =>
+        prev.filter((m) => String(m.id ?? m.movieId) !== String(movieId))
+    );
     } catch (err) {
       console.error("Remove failed", err);
     }
   };
 
   const isFavorite = (movieId) =>
-    Array.isArray(favorites) && favorites.some(movie => movie.id === movieId);  
+  Array.isArray(favorites) &&
+  favorites.some(movie => String(movie.id ?? movie.movieId) === String(movieId));
 
-  const isWatchListed = (movieId) =>
-  Array.isArray(watchlist) && watchlist.some(movie => String(movie.id) === String(movieId));
+const isWatchListed = (movieId) =>
+  Array.isArray(watchlist) &&
+  watchlist.some(movie => String(movie.id ?? movie.movieId) === String(movieId));
+
 
       
   return (
