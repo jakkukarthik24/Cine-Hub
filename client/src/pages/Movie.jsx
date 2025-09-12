@@ -9,9 +9,10 @@ function Movie() {
   const location = useLocation();
   const navigate = useNavigate();
   const movie = location.state?.movie;
-  const fromSearch = location.state?.fromSearch;
-  const searchQuery = location.state?.searchQuery;
-  const searchResults = location.state?.searchResults;
+  const searchQuery = location.state?.searchQuery || "";
+  const searchResults = location.state?.searchResults || [];
+  const fromSearch = location.state?.fromSearch || false;
+
   if (!movie) {
     return (
       <div className="error">
@@ -228,6 +229,26 @@ function Movie() {
     <>
       <div className="movie-detail">
         <div className="movie-image">
+          {fromSearch ? (
+            <button
+              className="back-btn"
+              onClick={() =>
+                navigate("/", {
+                  replace: true,
+                  state: { searchQuery, searchResults, fromSearch: true },
+                })
+              }
+            >
+              <i className="bi bi-arrow-left"></i> Back to Search
+            </button>
+          ) : (
+            <button onClick={() => navigate(-1)}>Go Back</button>
+          )}
+          {fromSearch && (
+            <p className="search-info">
+              Showing results for: <strong>{searchQuery}</strong>
+            </p>
+          )}
           <img
             src={
               movie.poster_path
