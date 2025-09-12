@@ -230,20 +230,11 @@ function Movie() {
         <div className="movie-image">
           {fromSearch && (
             <button
-              className="back-btn"
-              onClick={() =>
-                navigate("/", {
-                  state: {
-                    searchQuery,
-                    searchResults,
-                    fromSearch: true,
-                    key:Date.now()
-                  },
-                })
-              }
-            >
-              <i className="bi bi-arrow-left"></i>
-            </button>
+            className="back-btn"
+            onClick={() => navigate(-1)}
+          >
+            <i className="bi bi-arrow-left"></i>
+          </button>
           )}
           <img
             src={
