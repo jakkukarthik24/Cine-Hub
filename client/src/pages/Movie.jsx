@@ -40,6 +40,7 @@ function Movie() {
     document.title = `${movie?.title || "Movie"} | Cine Hub`;
     return () => {
       document.title = "Cine Hub";
+      navigate(-1);
     };
   }, [movie?.title]);
 

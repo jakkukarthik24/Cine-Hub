@@ -12,28 +12,25 @@ function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (location.state?.fromSearch && location.state?.searchResults) {
-      setSearchQuery(location.state.searchQuery || "");
-      setMovies(location.state.searchResults);
-      setError(null);
-      setLoading(false);
-      return;
-    }
-
+  if (location.state?.fromSearch && location.state?.searchResults) {
+    setSearchQuery(location.state.searchQuery || "");
+    setMovies(location.state.searchResults);
+    setError(null);
+  } else {
     const loadPopular = async () => {
       try {
         const popular = await getPopularMovies();
         setMovies(popular);
       } catch (err) {
         console.log(err);
-        setError("Failed to retrieve popular movies");
+        setError("Failed to retrieve popular");
       } finally {
         setLoading(false);
       }
     };
-
     loadPopular();
-  }, [location.state]);
+  }
+}, [location.state]);
 
   const handleSearch = async (e) => {
     e.preventDefault();
