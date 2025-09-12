@@ -237,6 +237,7 @@ function Movie() {
                     searchQuery,
                     searchResults,
                     fromSearch: true,
+                    key:Date.now()
                   },
                 })
               }

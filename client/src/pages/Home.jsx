@@ -31,7 +31,7 @@ function Home(){
             }
          }
          loadPopular();
-     },[location.pathname]);
+     },[location.key]);
      const handleSearch = async(e)=>{
         e.preventDefault();
         if(!searchQuery.trim()) return;
@@ -76,7 +76,7 @@ function Home(){
                         state={{
                            movie,
                            fromSearch:isSearch,
-                           searchQuery:searchQuery,
+                           searchQuery,
                            searchResults:movies
                         }}>
                         <MovieCard movie={movie} key={movie.id}></MovieCard>
