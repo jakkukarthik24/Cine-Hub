@@ -40,7 +40,6 @@ function Movie() {
     document.title = `${movie?.title || "Movie"} | Cine Hub`;
     return () => {
       document.title = "Cine Hub";
-      navigate(0);
     };
   }, [movie?.title]);
 
@@ -229,19 +228,6 @@ function Movie() {
     <>
       <div className="movie-detail">
         <div className="movie-image">
-          {fromSearch && (
-            <button
-            className="back-btn"
-            onClick={() =>
-              navigate("/", {
-                replace: true,
-                state: { searchQuery, searchResults, fromSearch: true },
-              })
-            }
-          >
-            <i className="bi bi-arrow-left"></i>
-          </button>
-          )}
           <img
             src={
               movie.poster_path
