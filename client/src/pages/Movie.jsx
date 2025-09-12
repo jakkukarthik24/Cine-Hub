@@ -229,26 +229,7 @@ function Movie() {
     <>
       <div className="movie-detail">
         <div className="movie-image">
-          {fromSearch ? (
-            <button
-              className="back-btn"
-              onClick={() =>
-                navigate("/", {
-                  replace: true,
-                  state: { searchQuery, searchResults, fromSearch: true },
-                })
-              }
-            >
-              <i className="bi bi-arrow-left"></i> Back to Search
-            </button>
-          ) : (
-            <button onClick={() => navigate(-1)}>Go Back</button>
-          )}
-          {fromSearch && (
-            <p className="search-info">
-              Showing results for: <strong>{searchQuery}</strong>
-            </p>
-          )}
+          
           <img
             src={
               movie.poster_path
