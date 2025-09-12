@@ -231,7 +231,12 @@ function Movie() {
           {fromSearch && (
             <button
             className="back-btn"
-            onClick={() => navigate(-1)}
+            onClick={() =>
+              navigate("/", {
+                replace: true,
+                state: { searchQuery, searchResults, fromSearch: true },
+              })
+            }
           >
             <i className="bi bi-arrow-left"></i>
           </button>
